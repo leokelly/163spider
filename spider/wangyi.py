@@ -104,12 +104,7 @@ class WANGYI(object):
                 imgs = data['img']
                 body = data['body'].encode('utf-8')
 
-                title = data['title']
-                title = title.replace(' ', '')
-                title = title.replace('（', '(')
-                title = title.replace('）', ')')
-                title = title.replace('(', '-')
-                title = title.replace(')', '')
+                title = data['title'].replace(' ', '').replace('（', '-').replace('）', '')
 
                 for img in imgs:
                     body = body.replace(img['ref'], "<img src=\"" + img['src'] + "\"/><hr>")
