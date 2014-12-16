@@ -20,11 +20,7 @@
 import torndb
 import _mysql_exceptions
 import sys
-import hashlib
 import requests
-import time
-import urllib
-
 
 from mylogger import get_logger
 
@@ -72,16 +68,6 @@ def query_mysql(sql):
     finally:
         return ret
 
-# url hash
-def url_hash(url):
-    if not isinstance(url, str):
-        try:
-            url = str(url)
-        except Exception as e:
-            raise
-
-    return hashlib.md5(url).hexdigest()
-
 # 执行 requests 的数据下载
 def download_page(url, ret_json=False):
     if not url:
@@ -102,14 +88,6 @@ def download_page(url, ret_json=False):
     except Exception as e:
         applog.info("下载失败, %s %s" % (url, e))
         return ''
-
-# 价格转换函数，把 50000 转换为实际的 500.00
-def price_convert(price):
-    return int(price) / 100.0
-
-# 时间转换函数，输入为秒，输出为 YYYY-mm-DD HH:MM:SS
-def convert_secs_to_human_format(secs):
-    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(secs))
 
 def test():
     pass

@@ -110,7 +110,6 @@ class WANGYI(object):
                 title = title.replace('）', ')')
                 title = title.replace('(', '-')
                 title = title.replace(')', '')
-                title_hash = utils.url_hash(str(title))
 
                 for img in imgs:
                     body = body.replace(img['ref'], "<img src=\"" + img['src'] + "\"/><hr>")
