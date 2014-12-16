@@ -1,4 +1,6 @@
 -- 网易轻松一刻数据记录
+create database if not exists WANGYI;
+
 drop table if exists wangyi;
 create table wangyi(
     id int not null auto_increment,
@@ -32,3 +34,18 @@ insert into run_control(item, total, one_page) values('qingsongyike', 400, 10);
 insert into run_control(item, total, one_page) values('huanqiukanke', 120, 10);
 insert into run_control(item, total, one_page) values('pangbianguaitan', 160, 10);
 insert into run_control(item, total, one_page) values('wangyigengtie', 380, 10);
+
+
+-- 友情链接表
+drop table if exists links;
+create table links(
+    id int not null auto_increment,
+    url varchar(255) not null,
+    title varchar(255) not null,
+    email varchar(128),
+    valid tinyint default 1,              -- 是否显示出来, 0-不显示，1-显示
+    rsv varchar(8),
+    KEY(id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into links(url, title, email) values('http://www.leyle.com/', '博客-遗落岛', 'leyle@leyle.com');
